@@ -5,6 +5,7 @@ class Statement
 
   def show
     print_header
+    print "No transactions" if @transactions.empty?
     @transactions.each { |transaction| print_row(transaction) }
     puts
   end

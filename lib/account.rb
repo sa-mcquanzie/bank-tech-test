@@ -1,8 +1,9 @@
 class Account
-  attr_reader :balance
+  attr_reader :balance, :statement
 
   def initialize(balance = 0)
     @balance = balance
+    @statement = Statement.new
   end
 
   def deposit(amount)
@@ -14,7 +15,7 @@ class Account
       puts "Insufficient funds"
       return
     end
-    
+
     @balance -= amount
   end
 end

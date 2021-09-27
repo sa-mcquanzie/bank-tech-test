@@ -22,7 +22,7 @@ describe Account do
       subject.deposit(100)
 
       expect(subject.balance).to be(100)
-    end
+    end 
   end
 
   context 'when a user makes a withdrawal' do
