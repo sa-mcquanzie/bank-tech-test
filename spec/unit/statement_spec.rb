@@ -23,7 +23,7 @@ describe Statement do
 
   context 'containing a single transaction' do
     it 'shows the transaction date' do
-      expect { statement_with_deposit.show }.to output(/#{date1}/).to_stdout
+      expect { statement_with_deposit.show }.to output(/01\/04\/1982/).to_stdout
     end
 
     it 'shows the transaction credit' do
@@ -41,8 +41,9 @@ describe Statement do
 
   context 'containing multiple transactions' do
     it 'shows the transaction dates' do
-      expect { statement_with_both.show }.to output(/#{date1}/).to_stdout
-      expect { statement_with_both.show }.to output(/#{date2}/).to_stdout
+      expect { statement_with_both.show }.to output(/01\/04\/1982/).to_stdout
+
+      expect { statement_with_both.show }.to output(/01\/04\/2008/).to_stdout
     end
 
     it 'shows the transaction credits' do

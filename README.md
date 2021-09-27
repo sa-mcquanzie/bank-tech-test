@@ -31,7 +31,6 @@
 * The user asks to **print** their **account.statement**
 * Each transaction of **@transactions** is shown in table 
 
-
 ## Specification
 
 ### Requirements

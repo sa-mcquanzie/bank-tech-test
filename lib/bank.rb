@@ -1,3 +1,3 @@
-require './account'
-require './statement'
+require 'account'
+require 'statement'
 # require 'transaction'

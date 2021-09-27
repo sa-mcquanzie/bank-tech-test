@@ -1,4 +1,4 @@
-require './transaction'
+require 'transaction'
 
 class Account  
   attr_reader :balance, :statement
