@@ -20,8 +20,17 @@ describe Account do
   context 'when a user makes a deposit' do
     it 'adds the deposited amount to the balance' do
       subject.deposit(100)
-      
+
       expect(subject.balance).to be(100)
+    end
+  end
+
+  context 'when a user makes a withdrawal' do
+    it 'subtracts the deposited amount from the balance' do
+      subject.deposit(1000)
+      subject.withdraw(750)
+
+      expect(subject.balance).to be(250)
     end
   end
 end
