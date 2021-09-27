@@ -14,6 +14,7 @@ class Account
       puts "Insufficient funds"
       return
     end
+    
     @balance -= amount
   end
 end

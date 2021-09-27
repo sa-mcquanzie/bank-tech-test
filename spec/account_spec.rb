@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  context 'opened with no initial balance' do
+  context 'when opened with no initial balance' do
     let(:new_empty_account) { Account.new }
 
     it 'should have a balance of 0' do
@@ -9,7 +9,7 @@ describe Account do
     end
   end
 
-  context 'opened with an initial balance' do
+  context 'when opened with some initial balance' do
     let(:new_account_with_money) { Account.new(100) }
 
     it 'should contain the initial balance' do
