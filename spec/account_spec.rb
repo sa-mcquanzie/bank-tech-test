@@ -1,6 +1,6 @@
 require 'account'
 
-describe 'A bank account' do
+describe Account do
   context 'opened with no initial balance' do
     let(:new_empty_account) { Account.new }
 
@@ -14,6 +14,14 @@ describe 'A bank account' do
 
     it 'should contain the initial balance' do
       expect(new_account_with_money.balance).to be(100)
+    end
+  end
+
+  context 'when a user makes a deposit' do
+    it 'adds the deposited amount to the balance' do
+      subject.deposit(100)
+      
+      expect(subject.balance).to be(100)
     end
   end
 end
