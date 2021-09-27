@@ -1,3 +1,3 @@
-require 'account.rb'
-require 'statement.rb'
+require './account'
+require './statement'
 # require 'transaction'

@@ -10,6 +10,10 @@ class Statement
     puts
   end
 
+  def add(transaction)
+    @transactions << transaction
+  end
+
   private
 
   def print_header

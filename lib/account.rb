@@ -1,4 +1,6 @@
-class Account
+require './transaction'
+
+class Account  
   attr_reader :balance, :statement
 
   def initialize(balance = 0)
@@ -8,6 +10,7 @@ class Account
 
   def deposit(amount)
     @balance += amount
+    @statement.add(Transaction.new(amount, @balance))
   end
 
   def withdraw(amount)
@@ -17,5 +20,6 @@ class Account
     end
 
     @balance -= amount
+    @statement.add(Transaction.new(-amount, @balance))
   end
 end

@@ -1,3 +1,5 @@
+require 'date'
+
 class Transaction
   attr_accessor :balance, :credit, :date, :debit
 
