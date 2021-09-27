@@ -32,5 +32,11 @@ describe Account do
 
       expect(subject.balance).to be(250)
     end
+
+    it 'does not allow negative balances' do
+      subject.deposit(1000)
+
+      expect { subject.withdraw(1001) }.to output("Insufficient funds\n").to_stdout
+    end
   end
 end
