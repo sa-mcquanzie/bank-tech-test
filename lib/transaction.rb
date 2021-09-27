@@ -5,8 +5,10 @@ class Transaction
 
   def initialize(amount, balance)
     @balance = balance
-    @credit, @debit = nil, nil
+    @credit = nil
+    @debit = nil
     @date = Date.today
+    
     amount.positive? ? @credit = amount : @debit = amount.abs
   end
 end

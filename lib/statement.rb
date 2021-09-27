@@ -20,18 +20,16 @@ class Statement
   private
 
   def print_header
-    labels = ["date", "credit", "debit", "balance"].map { |x| x.ljust(12) }
-    .join("||")
+    header = ["date", "credit", "debit", "balance"]
     
-    puts labels
+    puts header.map { |x| x.ljust(12) }.join("||")
   end
 
   def print_row(transaction)
-    row = [euro_date(transaction.date), transaction.credit,
-      transaction.debit, transaction.balance].map { |x| x.to_s.ljust(12) }
-      .join("||")
+    row = [ euro_date(transaction.date), transaction.credit,
+      transaction.debit, transaction.balance ]
 
-    puts row
+    puts row.map { |x| x.to_s.ljust(12) }.join("||")
   end
 
   def euro_date(date)
