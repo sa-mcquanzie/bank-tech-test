@@ -1,3 +1,2 @@
-require 'account'
-require 'statement'
-# require 'transaction'
+require_relative 'account'
+require_relative 'statement'
