@@ -1,20 +1,20 @@
 ## Classes
 
 **Account**
-* + @statement
-* - @balance
-* + deposit()
-* + withdraw()
+* +@statement
+* -@balance
+* +deposit()
+* +withdraw()
 
 **Transaction**
-* + @date
-* + @credit
-* + @debit
-* + @balance
+* +@date
+* +@credit
+* +@debit
+* +@balance
 
 **Statement**
-* - @transactions
-* + print()
+* -@transactions
+* +print()
 
 ## User journey
 
@@ -29,6 +29,7 @@
     * @balance = `account @balance`
 * The **transaction** is added to the **account @statement**
 * The user asks to **print** their **account.statement**
+* Each transaction of **@transactions** is shown in table 
 
 
 ## Specification
