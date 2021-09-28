@@ -4,6 +4,8 @@
 ### Instructions
 
 The app runs in IRB, load bank.rb from the project root directory
+
+
 Recommended IRB flags: `irb --simple-prompt --noecho -r './bank.rb'`
 
 Interact with your account using
@@ -47,6 +49,30 @@ Exit with `exit`
     * -euro_date()
     * -print_header()
     * -print_row()
+
+**Bank**
+* App entrypoint, only
+    * requires other classes
+    * instantiates a new account
+
+### Testing / Code Quality
+
+**Achieved**
+* unit and feature tests with rspec
+* 100% coverage according to simplecov
+* linted with rubocop
+* test driven
+* tested behaviour as far as possible
+* classes are quite discreet
+* tests used mocking where necessary
+* naming is decent and semantic I think
+* methods are short - refactored in to private methods where needed
+
+**To improve**
+* I did find I was testing a lot of exact strings, which, while not "state", doesn't exactly seem _good_, but I found it a bit difficult to avoid with an IRB-based program
+* The line between unit and feature tests is definitely blurred
+* a bit of duplication between statement.show() and account.show_statement methods, but:
+    * considered it the price to pay for minimizing accessors and keeping class responsibilities clear
 
 ## Specification
 
