@@ -22,7 +22,12 @@ describe Account do
       subject.deposit(100)
 
       expect(subject.balance).to be(100)
-    end 
+    end
+
+    it 'reminds them to supply an amount if they forget' do
+      expect { subject.deposit }
+      .to output("A transaction requires a non-zero amount\n").to_stdout
+    end
   end
 
   context 'when a user makes a withdrawal' do
@@ -31,6 +36,11 @@ describe Account do
       subject.withdraw(750)
 
       expect(subject.balance).to be(250)
+    end
+
+    it 'reminds them to supply an amount if they forget' do
+      expect { subject.deposit }
+      .to output("A transaction requires a non-zero amount\n").to_stdout
     end
 
     it 'does not allow negative balances' do

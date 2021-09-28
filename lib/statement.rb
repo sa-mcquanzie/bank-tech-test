@@ -26,8 +26,8 @@ class Statement
   end
 
   def print_row(transaction)
-    row = [ euro_date(transaction.date), decimal(transaction.credit),
-      decimal(transaction.debit), decimal(transaction.balance) ]
+    row = [euro_date(transaction.date), decimal(transaction.credit),
+      decimal(transaction.debit), decimal(transaction.balance)]
 
     puts row.map { |x| x.to_s.ljust(12) }.join("||")
   end
