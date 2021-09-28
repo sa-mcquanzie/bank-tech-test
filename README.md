@@ -18,6 +18,9 @@ Exit with `exit`
 ### Classes
 
 **Account**
+
+'./lib/account.rb'
+
 * properties
     * -@statement
     * -@balance
@@ -31,6 +34,9 @@ Exit with `exit`
     * -show_welcome_message()
 
 **Transaction**
+
+'./lib/transaction.rb'
+
 * properties
     * +@date
     * +@credit
@@ -38,6 +44,9 @@ Exit with `exit`
     * +@balance
 
 **Statement**
+
+'./lib/statement.rb'
+
 * properties
     * -@transactions
 * public methods
@@ -50,10 +59,22 @@ Exit with `exit`
     * -print_header()
     * -print_row()
 
+
+### Other stuff
+
 **Bank**
+
+'./bank.rb'
+
 * App entrypoint, only
     * requires other classes
     * instantiates a new account
+
+**DisplayHelpers**
+
+'./lib/display_helpers.rb'
+
+Various methods to help with the formatting and displaying output
 
 ### Testing / Code Quality
 
