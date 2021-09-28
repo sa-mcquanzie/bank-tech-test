@@ -27,15 +27,15 @@ describe Statement do
     end
 
     it 'shows the transaction credit' do
-      expect { statement_with_deposit.show }.to output(/1000/).to_stdout
+      expect { statement_with_deposit.show }.to output(/1000.00/).to_stdout
     end
 
     it 'shows the transaction debit' do
-      expect { statement_with_withdrawal.show }.to output(/500/).to_stdout
+      expect { statement_with_withdrawal.show }.to output(/500.00/).to_stdout
     end
 
     it 'shows the transaction balance' do
-      expect { statement_with_deposit.show }.to output(/2500/).to_stdout
+      expect { statement_with_deposit.show }.to output(/2500.00/).to_stdout
     end
   end
 
@@ -47,16 +47,16 @@ describe Statement do
     end
 
     it 'shows the transaction credits' do
-      expect { statement_with_both.show }.to output(/1000/).to_stdout
+      expect { statement_with_both.show }.to output(/1000.00/).to_stdout
     end
 
     it 'shows the transaction debits' do
-      expect { statement_with_both.show }.to output(/500/).to_stdout
+      expect { statement_with_both.show }.to output(/500.00/).to_stdout
     end
 
     it 'shows the transaction balances' do
-      expect { statement_with_both.show }.to output(/2500/).to_stdout
-      expect { statement_with_both.show }.to output(/2000/).to_stdout
+      expect { statement_with_both.show }.to output(/2500.00/).to_stdout
+      expect { statement_with_both.show }.to output(/2000.00/).to_stdout
     end
   end
 end

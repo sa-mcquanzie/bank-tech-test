@@ -26,13 +26,17 @@ class Statement
   end
 
   def print_row(transaction)
-    row = [ euro_date(transaction.date), transaction.credit,
-      transaction.debit, transaction.balance ]
+    row = [ euro_date(transaction.date), decimal(transaction.credit),
+      decimal(transaction.debit), decimal(transaction.balance) ]
 
     puts row.map { |x| x.to_s.ljust(12) }.join("||")
   end
 
   def euro_date(date)
     date.strftime("%d/%m/%Y")
+  end
+
+  def decimal(num)
+    num ? num.to_s + ".00" : ""
   end
 end
