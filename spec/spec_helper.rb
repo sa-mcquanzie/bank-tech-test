@@ -19,6 +19,12 @@ require 'simplecov'
 SimpleCov.start
 
 RSpec.configure do |config|
+  # config.before(:each) do
+  #   allow($stdout).to receive(:puts)
+  #   allow($stdout).to receive(:write)
+  # end
+
+  config.before { allow($stdout).to receive(:puts) }
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -103,3 +109,21 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+# # Redirects stderr and stdout to /dev/null.
+# def silence_output
+#   @orig_stderr = $stderr
+#   @orig_stdout = $stdout
+
+#   # redirect stderr and stdout to /dev/null
+#   $stderr = File.new('/dev/null', 'w')
+#   $stdout = File.new('/dev/null', 'w')
+# end
+
+# # Replace stdout and stderr so anything else is output correctly.
+# def enable_output
+#   $stderr = @orig_stderr
+#   $stdout = @orig_stdout
+#   @orig_stderr = nil
+#   @orig_stdout = nil
+# end

@@ -1,4 +1,19 @@
-## Classes
+# Bank Tech Test
+## Makers week 10
+
+### Instructions
+
+The app runs in IRB, load bank.rb from the project root directory
+Recommended IRB flags: `irb --simple-prompt --noecho -r './bank.rb'`
+
+Interact with your account using
+* `@account.deposit [value]` to make deposits
+* `@account.withdraw [value]` to make withdrawals
+* `@account.statement.show` to view the current account statement
+
+Exit with `exit`
+
+### Classes
 
 **Account**
 * +@statement
@@ -14,9 +29,9 @@
 
 **Statement**
 * -@transactions
-* +print()
+* +show()
 
-## User journey
+### User journey
 
 * A user opens a **new Account** with a **balance** (default: 0)
 * The account **balance** is set to `balance`, and a **new Statement** is created

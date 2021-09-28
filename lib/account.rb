@@ -4,6 +4,8 @@ class Account
   def initialize(balance = 0, statement = Statement.new)
     @balance = balance
     @statement = statement
+
+    show_welcome_message
   end
 
   def deposit(amount = 0)
@@ -39,5 +41,16 @@ class Account
 
   def check_sufficient_funds(amount)
     raise 'Insufficient funds' if amount > @balance
+  end
+
+  def show_welcome_message
+    puts "Welcome, new customer!"
+    puts
+    puts "Interact with your account using `@account`:"
+    puts
+    puts "Make deposits using `@account.deposit [value]`"
+    puts "Make withdrawals using `@account.withdraw [value]`"
+    puts "View your statement with `@account.statement.show`"
+    puts
   end
 end
