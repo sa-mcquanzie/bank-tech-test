@@ -12,7 +12,7 @@ class Statement
       check_transactions
 
       print_header
-      @transactions.each { |transaction| print_row(transaction) }
+      @transactions.reverse.each { |transaction| print_row(transaction) }
     rescue StandardError => error
       puts error
     end
