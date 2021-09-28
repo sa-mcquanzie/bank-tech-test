@@ -1,5 +1,5 @@
 class Account  
-  attr_reader :balance, :statement
+  attr_reader :balance
 
   def initialize(balance = 0, statement = Statement.new)
     @balance = balance
@@ -29,6 +29,10 @@ class Account
     rescue StandardError => error
       puts error
     end
+  end
+
+  def statement
+    @statement.show
   end
 
   private
