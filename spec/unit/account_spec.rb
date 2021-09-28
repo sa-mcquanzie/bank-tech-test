@@ -26,7 +26,12 @@ describe Account do
 
     it 'reminds them to supply an amount if they forget' do
       expect { subject.deposit }
-      .to output("A transaction requires a non-zero amount\n").to_stdout
+      .to output("Amount must be non-zero\n").to_stdout
+    end
+
+    it 'reminds them to enter a positive amount if the amount is negative' do
+      expect { subject.deposit(-50) }
+      .to output("Amount must be positive\n").to_stdout
     end
   end
 
@@ -40,7 +45,12 @@ describe Account do
 
     it 'reminds them to supply an amount if they forget' do
       expect { subject.deposit }
-      .to output("A transaction requires a non-zero amount\n").to_stdout
+      .to output("Amount must be non-zero\n").to_stdout
+    end
+
+    it 'reminds them to enter a positive amount if the amount is negative' do
+      expect { subject.withdraw(-50) }
+      .to output("Amount must be positive\n").to_stdout
     end
 
     it 'does not allow negative balances' do

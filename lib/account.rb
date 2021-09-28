@@ -10,7 +10,7 @@ class Account
 
   def deposit(amount = 0)
     begin
-      check_non_zero(amount)
+      check_input(amount)
 
       @balance += amount
       @statement.add(Transaction.new(amount, @balance))
@@ -21,7 +21,7 @@ class Account
 
   def withdraw(amount = 0)
     begin
-      check_non_zero(amount)
+      check_input(amount)
       check_sufficient_funds(amount)
 
       @balance -= amount
@@ -33,8 +33,10 @@ class Account
 
   private
 
-  def check_non_zero(amount)
-    raise 'A transaction requires a non-zero amount' if amount.zero?
+  def check_input(amount)
+    raise 'Amount must be a whole number' unless amount.class == Integer
+    raise 'Amount must be non-zero' if amount.zero?
+    raise 'Amount must be positive' if amount.negative?
   end
 
   def check_sufficient_funds(amount)
