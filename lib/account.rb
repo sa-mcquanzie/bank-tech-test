@@ -14,6 +14,8 @@ class Account
 
       @balance += amount
       @statement.add(Transaction.new(amount, @balance))
+
+      puts "Deposited #{amount}"
     rescue StandardError => error
       puts error
     end

@@ -9,7 +9,7 @@ Recommended IRB flags: `irb --simple-prompt --noecho -r './bank.rb'`
 Interact with your account using
 * `@account.deposit [value]` to make deposits
 * `@account.withdraw [value]` to make withdrawals
-* `@account.statement.show` to view the current account statement
+* `@account.statement` to view the current account statement
 
 Exit with `exit`
 

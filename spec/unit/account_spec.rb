@@ -19,9 +19,8 @@ describe Account do
 
   context 'when a user makes a deposit' do
     it 'adds the deposited amount to the balance' do
-      subject.deposit(100)
-
-      expect(subject.balance).to be(100)
+      expect { subject.deposit(100) }
+      .to output(/Deposited 100/).to_stdout
     end
 
     it 'reminds them to supply an amount if they forget' do
