@@ -1,7 +1,7 @@
-require 'format_helpers'
+require_relative 'display_helpers'
 
 class Statement
-  include FormatHelpers
+  include DisplayHelpers
 
   def initialize(transactions = [])
     @transactions = transactions

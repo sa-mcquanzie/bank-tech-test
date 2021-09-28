@@ -1,4 +1,8 @@
-class Account  
+require_relative 'display_helpers'
+
+class Account
+  include DisplayHelpers
+
   def initialize(balance = 0, statement = Statement.new)
     @balance = balance
     @statement = statement
@@ -48,17 +52,5 @@ class Account
 
   def check_sufficient_funds(amount)
     raise 'Insufficient funds' if amount > @balance
-  end
-
-  def show_welcome_message
-    puts "Welcome, new customer!"
-    puts
-    puts "Interact with your account using `@account`:"
-    puts
-    puts "Make deposits using `@account.deposit [value]`"
-    puts "Make withdrawals using `@account.withdraw [value]`"
-    puts "View your statement with `@account.show_statement`"
-    puts
-    puts "Balance is zero" if @balance.zero?
   end
 end

@@ -15,6 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'date'
 require 'simplecov'
+require 'display_helpers'
 
 SimpleCov.start
 
