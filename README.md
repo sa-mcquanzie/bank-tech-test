@@ -9,42 +9,44 @@ Recommended IRB flags: `irb --simple-prompt --noecho -r './bank.rb'`
 Interact with your account using
 * `@account.deposit [value]` to make deposits
 * `@account.withdraw [value]` to make withdrawals
-* `@account.statement` to view the current account statement
+* `@account.show_statement` to view the current account statement
 
 Exit with `exit`
 
 ### Classes
 
 **Account**
-* +@statement
-* -@balance
-* +deposit()
-* +withdraw()
+* properties
+    * -@statement
+    * -@balance
+* public methods
+    * +deposit()
+    * +withdraw()
+    * +show_statement()
+* private methods
+    * -check_input()
+    * -check_sufficient_funds()
+    * -show_welcome_message()
 
 **Transaction**
-* +@date
-* +@credit
-* +@debit
-* +@balance
+* properties
+    * +@date
+    * +@credit
+    * +@debit
+    * +@balance
 
 **Statement**
-* -@transactions
-* +show()
-
-### User journey
-
-* A user opens a **new Account** with a **balance** (default: 0)
-* The account **balance** is set to `balance`, and a **new Statement** is created
-* They **deposit** an integer amount of `100`
-* `100` is added to the account `@balance`
-* A **new Transaction** is created with:
-    * @date = `Date.now`
-    * @credit = `100`
-    * @debit = nil
-    * @balance = `account @balance`
-* The **transaction** is added to the **account @statement**
-* The user asks to **print** their **account.statement**
-* Each transaction of **@transactions** is shown in table 
+* properties
+    * -@transactions
+* public methods
+    * +add()
+    * +show()
+* private_methods
+    * -check_transactions()
+    * -decimal()
+    * -euro_date()
+    * -print_header()
+    * -print_row()
 
 ## Specification
 

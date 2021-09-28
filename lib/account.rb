@@ -1,11 +1,10 @@
 class Account  
-  attr_reader :balance
-
   def initialize(balance = 0, statement = Statement.new)
     @balance = balance
     @statement = statement
 
     show_welcome_message
+    deposit(balance) if balance.positive?
   end
 
   def deposit(amount = 0)
@@ -35,7 +34,7 @@ class Account
     end
   end
 
-  def statement
+  def show_statement
     @statement.show
   end
 
@@ -58,7 +57,8 @@ class Account
     puts
     puts "Make deposits using `@account.deposit [value]`"
     puts "Make withdrawals using `@account.withdraw [value]`"
-    puts "View your statement with `@account.statement.show`"
+    puts "View your statement with `@account.show_statement`"
     puts
+    puts "Balance is zero" if @balance.zero?
   end
 end
