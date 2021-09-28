@@ -28,6 +28,8 @@ class Account
 
       @balance -= amount
       @statement.add(Transaction.new(-amount, @balance))
+
+      puts "Withdrew #{amount}"
     rescue StandardError => error
       puts error
     end

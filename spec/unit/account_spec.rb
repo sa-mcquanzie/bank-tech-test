@@ -1,21 +1,21 @@
 require 'account'
 
 describe Account do
-  context 'when opened with no initial balance' do
-    it 'should have a balance of 0' do
-      expect(subject.balance).to be(0)
-    end
-  end
+  # context 'when opened with no initial balance' do
+  #   it 'should have a balance of 0' do
+  #     expect(subject.balance).to be(0)
+  #   end
+  # end
 
-  context 'when opened with some initial balance' do
-    it 'should contain the initial balance' do
-      allow($stdout).to receive(:puts)
+  # context 'when opened with some initial balance' do
+  #   it 'should contain the initial balance' do
+  #     allow($stdout).to receive(:puts)
 
-      new_account_with_money = Account.new(100)
+  #     new_account_with_money = Account.new(100)
 
-      expect(new_account_with_money.balance).to be(100)
-    end
-  end
+  #     expect(new_account_with_money.balance).to be(100)
+  #   end
+  # end
 
   context 'when a user makes a deposit' do
     it 'adds the deposited amount to the balance' do
@@ -37,9 +37,9 @@ describe Account do
   context 'when a user makes a withdrawal' do
     it 'subtracts the deposited amount from the balance' do
       subject.deposit(1000)
-      subject.withdraw(750)
 
-      expect(subject.balance).to be(250)
+      expect { subject.withdraw(750) }
+      .to output(/Withdrew 750/).to_stdout
     end
 
     it 'reminds them to supply an amount if they forget' do
