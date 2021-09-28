@@ -8,16 +8,29 @@ class Statement
   end
 
   def show
-    print_header
+    begin
+      check_transactions
 
-    print "No transactions" if @transactions.empty?
-
-    @transactions.each { |transaction| print_row(transaction) }
-
-    puts
+      print_header
+      @transactions.each { |transaction| print_row(transaction) }
+    rescue StandardError => error
+      puts error
+    end
   end
 
   private
+
+  def check_transactions
+    raise "No transactions to show" if @transactions.empty?
+  end
+
+  def decimal(num)
+    num ? num.to_s + ".00" : ""
+  end
+
+  def euro_date(date)
+    date.strftime("%d/%m/%Y")
+  end
 
   def print_header
     header = ["date", "credit", "debit", "balance"]
@@ -30,13 +43,5 @@ class Statement
       decimal(transaction.debit), decimal(transaction.balance)]
 
     puts row.map { |x| x.to_s.ljust(12) }.join("||")
-  end
-
-  def euro_date(date)
-    date.strftime("%d/%m/%Y")
-  end
-
-  def decimal(num)
-    num ? num.to_s + ".00" : ""
   end
 end

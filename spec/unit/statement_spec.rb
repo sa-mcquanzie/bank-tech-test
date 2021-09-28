@@ -21,6 +21,12 @@ describe Statement do
     Statement.new([deposit_transaction, withdrawal_transaction])
   }
 
+  context 'containing no transactions' do
+    it 'informs the user no transactions have been made' do
+      expect { subject.show }.to output("No transactions to show\n").to_stdout
+    end
+  end
+
   context 'containing a single transaction' do
     it 'shows the transaction date' do
       expect { statement_with_deposit.show }.to output(/01\/04\/1982/).to_stdout
