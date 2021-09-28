@@ -67,6 +67,7 @@ Exit with `exit`
 * tests used mocking where necessary
 * naming is decent and semantic I think
 * methods are short - refactored in to private methods where needed
+* frequent commits
 
 **To improve**
 * I did find I was testing a lot of exact strings, which, while not "state", doesn't exactly seem _good_, but I found it a bit difficult to avoid with an IRB-based program
