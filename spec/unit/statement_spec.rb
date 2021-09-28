@@ -66,7 +66,8 @@ describe Statement do
     end
 
     it 'shows the transactions in reverse chronological order' do
-      
+      expect { statement_with_both.show }
+      .to output(/2000.00     \n01\/04\/1982/).to_stdout
     end
   end
 end
