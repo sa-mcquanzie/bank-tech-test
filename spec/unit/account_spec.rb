@@ -1,17 +1,22 @@
 require 'account'
-require 'transaction'
 require 'statement'
+require 'transaction'
 
 describe Account do
   let(:date1) { Date.new(1982,4,1) }
   let(:date2) { Date.new(2008,4,1) }
   let(:statement) { double(Statement, transactions: []) }
   let(:subject) { Account.new(0, statement) }
-  let(:transaction) { double Transaction }
-  let(:transactions) { [] }
+  # let(:transaction) { double Transaction }
 
   before do
-    allow(Transaction).to receive(:new).with(any_args).and_return(transaction)
+    allow(Transaction).to receive(:new)
+    .with(instance_of(Integer), instance_of(Integer)) do |amount, balance|
+      c = amount.positive? ? amount : nil
+      d = amount.negative? ? amount.abs : nil
+      double(Transaction, balance: balance, credit: c, date: date1, debit: d)
+    end
+
     allow(Statement).to receive(:new).with(any_args).and_return(statement)
     allow(statement).to receive(:add).with(any_args) do |value| 
       statement.transactions << value
@@ -19,8 +24,10 @@ describe Account do
   end
 
   describe '#show_statement' do
-    it 'tells you when there are no transactions' do
+    it 'calls Statement#show' do
+      expect(statement).to receive(:show)
 
+      subject.show_statement
     end
   end
 
@@ -31,23 +38,26 @@ describe Account do
   end
 
   context 'when opened with some initial balance' do
-    let(:subject) { Account.new(50, statement) }
-
     it 'shows the initial balance' do
-      expect { subject }.to output(/Deposited 50/).to_stdout
+      expect { Account.new(50, statement) }.to output(/Deposited 50/).to_stdout
     end
 
-    it 'adds a transaction to the statement' do
-      account = Account.new(50, statement)
+    it 'can add a credit transaction to the statement' do
+      Account.new(50, statement)
 
-      expect(statement.transactions).not_to be_empty
+      expect(statement.transactions.last.credit).to be(50)
     end
   end
 
   context 'when a user makes a deposit' do
-    it 'adds the deposited amount to the balance' do
-      expect { subject.deposit(100) }
-      .to output(/Deposited 100/).to_stdout
+    it 'gives feedback about the transaction' do
+      expect { subject.deposit(100) }.to output(/Deposited 100/).to_stdout
+    end
+
+    it 'adds a credit transaction to the statement' do
+      subject.deposit(100)
+
+      expect(statement.transactions.last.credit).to be(100)
     end
 
     it 'reminds them to supply an amount if they forget' do
@@ -62,11 +72,18 @@ describe Account do
   end
 
   context 'when a user makes a withdrawal' do
-    it 'subtracts the deposited amount from the balance' do
+    it 'gives feedback about the transaction' do
       subject.deposit(1000)
 
-      expect { subject.withdraw(750) }
-      .to output(/Withdrew 750/).to_stdout
+      expect { subject.withdraw(750) }.to output(/Withdrew 750/).to_stdout
+    end
+
+    it 'adds a debit transaction to the statement' do
+      subject.deposit(100)
+      subject.withdraw(75)
+
+      expect(statement.transactions.last.debit).to be(75)
+      expect(statement.transactions.last.balance).to be(25)
     end
 
     it 'reminds them to supply an amount if they forget' do
