@@ -53,4 +53,12 @@ class Account
   def check_sufficient_funds(amount)
     raise 'Insufficient funds' if amount > @balance
   end
+
+  def new_transaction(num)
+    transaction = Transaction.new
+
+    transaction.amount = num
+    transaction.balance = @balance
+    num.positive? ? transaction.credit = num : transaction.debit = num.abs
+  end
 end

@@ -1,15 +1,46 @@
 require 'account'
+require 'transaction'
+require 'statement'
 
 describe Account do
+  let(:date1) { Date.new(1982,4,1) }
+  let(:date2) { Date.new(2008,4,1) }
+  let(:statement) { double(Statement, transactions: []) }
+  let(:subject) { Account.new(0, statement) }
+  let(:transaction) { double Transaction }
+  let(:transactions) { [] }
+
+  before do
+    allow(Transaction).to receive(:new).with(any_args).and_return(transaction)
+    allow(Statement).to receive(:new).with(any_args).and_return(statement)
+    allow(statement).to receive(:add).with(any_args) do |value| 
+      statement.transactions << value
+    end
+  end
+
+  describe '#show_statement' do
+    it 'tells you when there are no transactions' do
+
+    end
+  end
+
   context 'when opened with no initial balance' do
-    it 'should have a balance of 0' do
+    it 'shows it has a balance of 0' do
       expect { subject }.to output(/Balance is zero/).to_stdout
     end
   end
 
   context 'when opened with some initial balance' do
-    it 'should contain the initial balance' do
-      expect { Account.new(50) }.to output(/Deposited 50/).to_stdout
+    let(:subject) { Account.new(50, statement) }
+
+    it 'shows the initial balance' do
+      expect { subject }.to output(/Deposited 50/).to_stdout
+    end
+
+    it 'adds a transaction to the statement' do
+      account = Account.new(50, statement)
+
+      expect(statement.transactions).not_to be_empty
     end
   end
 
