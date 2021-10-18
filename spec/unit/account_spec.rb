@@ -7,7 +7,6 @@ describe Account do
   let(:date2) { Date.new(2008,4,1) }
   let(:statement) { double(Statement, transactions: []) }
   let(:subject) { Account.new(0, statement) }
-  # let(:transaction) { double Transaction }
 
   before do
     allow(Transaction).to receive(:new)
